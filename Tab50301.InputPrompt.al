@@ -4,6 +4,8 @@ table 50301 InputPrompt
     DataClassification = ToBeClassified;
     //TableType = Temporary;
 
+    //new irrelevant line to test commit compare
+
     fields
     {
         field(1; Input; Text[2048])

@@ -12,9 +12,6 @@ someDiv.innerHTML = "<a href='mailto:" +somePerson+ "'>MailLink</a>";
 //someDiv.innerHTML += "<a href='mailto:" +""+getInputValue()+ "'>MailLink</a>";
 
 
-
-
-
 /*
 var clickedAlready = false;
 someDiv.addEventListener('click', event => {
