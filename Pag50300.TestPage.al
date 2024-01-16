@@ -55,6 +55,27 @@ page 50300 "TestPage"
                             */
                         }
                     }
+                    grid(CommunicateWithAL)
+                    {
+                        usercontrol(CtrlName; CtrlAddinCommunicateWithAL)
+                        {
+                            ApplicationArea = All;
+
+                            trigger SomeEvent(firstParam: Text; secondParam: Text)
+                            begin
+                                Message('"SomeEvent" happened with' +
+                                        '\firstParam: ' + firstParam +
+                                        '\secondParam: ' + secondParam);
+
+                            end;
+
+                            trigger MessageTheOutput(output: Text)
+                            begin
+                                Message(output);
+                            end;
+                        }
+                    }
+
                     grid(gridCg)
                     {
                         cuegroup(cuegrp)
@@ -137,7 +158,7 @@ page 50300 "TestPage"
                     if cust.FindFirst() then
                         repeat
                             currIterator += 1;
-                            Sleep(500);
+                            Sleep(10);
                             ProcessingWindow.Update(1, FORMAT((currIterator * intDIV) / 100) + '%');
                             ProcessingWindow.Update(2, FORMAT((currIterator * intDIV) / 100) + '%');
                             ProcessingWindow.Update(3, (currIterator * intDIV));
@@ -242,5 +263,6 @@ page 50300 "TestPage"
     var
         txt1: Text;
         txt2: Text;
+
 
 }
