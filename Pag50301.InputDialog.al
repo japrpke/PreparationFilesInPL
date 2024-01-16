@@ -24,6 +24,23 @@ page 50301 InputDialog
                 {
 
                 }
+                field("Input 2"; inp2)
+                {
+
+                }
+                field("StrMenu"; strMenuInt)
+                {
+                    trigger OnAssistEdit()
+                    var
+                    begin
+                        //iirc StrMenu() defaults to 0 if the dialog is exited without choice
+                        strMenuInt := Dialog.StrMenu('StrMenuOption1,StrMenuOption2,StrMenuOption3', 2, 'Instructions for choosing go here.'); //second argument (in this case 2), is which radio-button is pre-selected
+                    end;
+                }
+                usercontrol(ControlName; ProgressbarTestCtrlAddin)
+                {
+                    ApplicationArea = All;
+                }
             }
             systempart(a; Outlook)
             {
@@ -33,22 +50,20 @@ page 50301 InputDialog
     }
     trigger OnOpenPage()
     var
-        InputTable: Record InputPrompt;
+
     begin
-        InputTable.DeleteAll();
-        InputTable.Init();
-        InputTable.Insert();
+
     end;
 
     procedure GetCurrentInput(): Text
     var
     begin
-        //exit(Rec.Input);
-        exit(input);
+        exit('"' + input + '"' + '\' + Format(inp2) + '\' + Format(strMenuInt));
     end;
 
 
     var
         input: Text;
-
+        inp2: Option "Option 1","Option 2","Option 3";
+        strMenuInt: Integer;
 }
